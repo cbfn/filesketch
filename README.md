@@ -152,4 +152,4 @@ Este projeto é open-source sob a licença [MIT](LICENSE).
 
 ---
 
-### 💡 Ideia e desenvolvimento por [@seu-usuario](https://github.com/seu-usuario)
+### 💡 Ideia e desenvolvimento por [@cbfn](https://github.com/cbfn)
