@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366F1"/> <!-- indigo -->
+      <stop offset="1" stop-color="#EC4899"/> <!-- pink -->
+    </linearGradient>
+  </defs>
+  <!-- Folder shape -->
+  <path d="M40 64h72l16 16h88a16 16 0 0 1 16 16v96a16 16 0 0 1-16 16H40a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16z"
+        fill="url(#g)" rx="12"/>
+  <!-- Tree sketch lines -->
+  <path d="M80 120h48M80 152h32M80 184h56" stroke="white" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -1,26 +1,59 @@
 @import "tailwindcss";
+@import "prismjs/themes/prism-tomorrow.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: 0 0% 100%;
+  --card: 0 0% 98%;
+  --border: 0 0% 85%;
+  --text: 222 47% 11%;
+  --accent: 221 83% 53%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="dark"] {
+  --bg: 222 47% 11%;
+  --card: 220 14% 16%;
+  --border: 218 13% 25%;
+  --text: 210 40% 96%;
+  --accent: 262 83% 57%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="forest"] { /* verde */
+  --bg: 140 20% 98%;
+  --card: 140 15% 94%;
+  --border: 140 10% 80%;
+  --text: 150 25% 15%;
+  --accent: 160 80% 35%;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+[data-theme="sunset"] { /* laranja/rosa */
+  --bg: 20 100% 98%;
+  --card: 18 100% 95%;
+  --border: 16 80% 85%;
+  --text: 338 30% 15%;
+  --accent: 12 90% 55%;
+}
+
+/* Melhorar contraste do popup em dark (nem todo browser respeita) */
+:root.dark select option {
+  background-color: #0b0f14; /* fundo escuro */
+  color: #f3f4f6;            /* texto claro */
+}
+:root.dark optgroup {
+  background-color: #0b0f14;
+  color: #f3f4f6;
+}
+/* Em claro, garanta contraste */
+:root select option {
+  background-color: #ffffff;
+  color: #0b0f14;
+}
+
+html, body {
+  height: 100%;
+  background-color: hsl(var(--bg));
+  color: hsl(var(--text));
+}
+
+html {
+  scroll-behavior: smooth;
 }

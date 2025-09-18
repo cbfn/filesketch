@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📂 Filesketch
 
-## Getting Started
+Transforme **texto simples** em **árvores de pastas bonitas**, coloridas e exportáveis.  
+Perfeito para PRs, documentações e apresentações técnicas.  
 
-First, run the development server:
+![preview](./public/preview.png) <!-- você pode atualizar com um screenshot gerado -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ O que é?
+
+O **Filesketch** é uma ferramenta online feita em **Next.js + TailwindCSS** que permite:
+
+- Escrever uma mini-sintaxe de estrutura de pastas (inspirada em JSON).
+- Visualizar instantaneamente como **árvore ASCII colorida**.
+- Alternar temas prontos (Dracula, Monokai, Solarized…).
+- Personalizar o **fundo da árvore**.
+- Exportar como **PNG** ou copiar em **texto ASCII**.
+- Mostrar/ocultar ícones de arquivos e pastas com ícones do [lucide-react](https://lucide.dev/).
+
+---
+
+## 🖥️ Demonstração
+
+```txt
+{
+  src: {
+    main.tsx,
+    routes.tsx,
+    components: {
+      Header: { index.tsx, index.test.tsx },
+      Footer: { index.tsx, index.test.tsx },
+      ...
+    },
+    ...
+  },
+  public: {
+    index.html,
+    assets: { images: { ... } }
+  },
+  next.config.ts,
+  README.md,
+  ...
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Renderiza em:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+filesketch/
+└─ src/
+   ├─ main.tsx
+   ├─ routes.tsx
+   ├─ components/
+   │  ├─ Header/
+   │  │  ├─ index.tsx
+   │  │  └─ index.test.tsx
+   │  └─ Footer/
+   │     ├─ index.tsx
+   │     └─ index.test.tsx
+   └─ ...
+└─ public/
+   ├─ index.html
+   └─ assets/
+      └─ images/
+         └─ ...
+└─ next.config.ts
+└─ README.md
+└─ ...
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Tecnologias
 
-To learn more about Next.js, take a look at the following resources:
+- ⚡ [Next.js 14](https://nextjs.org/)  
+- 🎨 [TailwindCSS](https://tailwindcss.com/)  
+- 🖋️ [react-simple-code-editor](https://github.com/satya164/react-simple-code-editor) + [PrismJS](https://prismjs.com/)  
+- 📦 [lucide-react](https://lucide.dev/) (ícones de arquivos e pastas)  
+- 🖼️ [html-to-image](https://github.com/bubkoo/html-to-image) (exportar PNG)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Como rodar localmente
 
-## Deploy on Vercel
+```bash
+# 1. Clone o repositório
+git clone https://github.com/cbfn/filesketch.git
+cd filesketch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 2. Instale as dependências
+npm install
+# ou
+yarn install
+# ou
+pnpm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 3. Rode o servidor de dev
+npm run dev
+```
+
+Abra em [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📚 Documentação rápida da sintaxe
+
+- **Pasta**: `nome: { ... }`  
+- **Arquivo**: `nome.ext`  
+- **Subpasta**: `{ pasta: { arquivo.ext } }`  
+- **Reticências (`...`)**: representam conteúdo omitido no mesmo nível.  
+- **Topo**: pode misturar **pastas e arquivos** lado a lado.  
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Exportar árvore como PNG  
+- [x] Suporte a temas de cor + fundo customizável  
+- [x] Ícones opcionais de arquivos/pastas  
+- [ ] Modo visual em **cards**  
+- [ ] Compartilhar árvore por link curto  
+- [ ] Editor com auto-complete para a sintaxe  
+
+---
+
+## 🤝 Como contribuir
+
+Quer ajudar a melhorar o **Filesketch**?  
+Siga os passos:
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature/bugfix:  
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Commit suas mudanças:  
+   ```bash
+   git commit -m "Adiciona nova feature"
+   ```
+4. Envie sua branch:  
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um Pull Request 🎉
+
+---
+
+## 📜 Licença
+
+Este projeto é open-source sob a licença [MIT](LICENSE).
+
+---
+
+### 💡 Ideia e desenvolvimento por [@seu-usuario](https://github.com/seu-usuario)

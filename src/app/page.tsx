@@ -1,103 +1,42 @@
-import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
+import Hero from "@/components/Hero";
+import TreeView from "@/components/TreeView";
+import DocumentationCards from "@/components/DocumentationCards";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-dvh">
+      <SiteHeader />
+      <Hero />
+      <section id="editor" className="mx-auto max-w-6xl px-4 py-14 ">
+        <div className="mb-8 text-center">
+          {/* Título com hierarquia abaixo do Hero */}
+          <h2 className="text-2xl font-semibold leading-tight md:text-3xl text-center text-[hsl(var(--accent))] ">
+            Crie, personalize e exporte sua árvore de pastas
+          </h2>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Subtítulo com o mesmo padrão de corpo do Hero */}
+          <p className="mt-2 mb-14 max-w-prose text-sm opacity-80 text-center mx-auto">
+            Cole sua DSL no campo, escolha um tema e fundo para o ASCII, e então
+            exporte como PNG ou copie a árvore em texto para usar em PRs e
+            documentações.
+          </p>
+
+          <div className="mt-6">
+            <TreeView />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Nova seção */}
+      <div className="border-t border-gray-200 py-8 text-xs dark:border-gray-700">
+      
+      <DocumentationCards />
+      </div>
+
+      <footer className="border-t border-gray-200 py-8 text-center text-xs opacity-70 dark:border-gray-700">
+        Feito com <a href="https://nextjs.org/" className="text-[hsl(var(--accent))] underline">Next.js</a> + <a href="https://tailwindcss.com" className="text-[hsl(var(--accent))] underline">Tailwind</a> e uma pitada de IA. © {new Date().getFullYear()} Filesketch by <a href="https://cbfn.dev" className="text-[hsl(var(--accent))] underline">cbfn.dev</a>.
       </footer>
-    </div>
+    </main>
   );
 }
