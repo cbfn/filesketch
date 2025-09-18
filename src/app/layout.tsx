@@ -12,7 +12,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = { title: "Filesketch", description: "Gere árvores de pastas bonitonas" };
+export const metadata = {
+  title: "Filesketch – Gere árvores de pastas bonitas",
+  description: "Transforme texto simples em árvores ASCII coloridas, exportáveis e temáveis. Feito por Christian Nascimento – cbfn.dev",
+  authors: [{ name: "Christian Nascimento", url: "https://cbfn.dev" }],
+  openGraph: {
+    url: "https://filesketch.cbfn.dev", // ou seu domínio
+    title: "Filesketch",
+    description: "DSL → Árvore de pastas bonita",
+    images: [{ url: "/filesketch-tree.png", width: 1200, height: 630, alt: "Filesketch filesketch-tree" }],
+  },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: "Filesketch",
+  //   description: "Transforme texto simples em árvores de pastas bonitas",
+  //   creator: "@seu_usuario_twitter",
+  //   images: ["/preview.png"],
+  // },
+};
+
 
 function themeInitScript() {
   const code = `

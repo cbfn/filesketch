@@ -30,12 +30,21 @@ export default function Page() {
 
       {/* Nova seção */}
       <div className="border-t border-gray-200 py-8 text-xs dark:border-gray-700">
-      
-      <DocumentationCards />
+        <DocumentationCards />
       </div>
 
       <footer className="border-t border-gray-200 py-8 text-center text-xs opacity-70 dark:border-gray-700">
-        Feito com <a href="https://nextjs.org/" className="text-[hsl(var(--accent))] underline">Next.js</a> + <a href="https://tailwindcss.com" className="text-[hsl(var(--accent))] underline">Tailwind</a> e uma pitada de IA. © {new Date().getFullYear()} Filesketch by <a href="https://cbfn.dev" className="text-[hsl(var(--accent))] underline">cbfn.dev</a>.
+        Feito com Next.js + Tailwind e uma pitada de IA. ©{" "}
+        {new Date().getFullYear()} Filesketch by{" "}
+        <a
+          href="https://cbfn.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium underline hover:text-[hsl(var(--accent))]"
+        >
+          cbfn.dev
+        </a>
+        .
       </footer>
     </main>
   );

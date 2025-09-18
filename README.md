@@ -3,7 +3,7 @@
 Transforme **texto simples** em **árvores de pastas bonitas**, coloridas e exportáveis.  
 Perfeito para PRs, documentações e apresentações técnicas.  
 
-![preview](./public/preview.png) <!-- você pode atualizar com um screenshot gerado -->
+![preview](./public/filesketch-tree.png) <!-- você pode atualizar com um screenshot gerado -->
 
 ---
 

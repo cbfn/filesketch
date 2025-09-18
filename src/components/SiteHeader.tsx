@@ -2,8 +2,10 @@
 import Image from "next/image";
 import { Github } from "lucide-react";
 import ThemeSwitch from "./ThemeSwitch";
+import { useGitHubStars } from "@/lib/useGitHubStars";
 
 export default function SiteHeader() {
+  const stars = useGitHubStars("seu-usuario", "filesketch");
   return (
     <header className="sticky top-0 z-30 w-full border-b border-white/5 bg-black/80 backdrop-blur-md supports-[backdrop-filter]:bg-black/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -39,17 +41,18 @@ export default function SiteHeader() {
         {/* Ações */}
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com/"
+            href="https://github.com/seu-usuario/filesketch"
             target="_blank"
             rel="noreferrer"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg border border-white/10 bg-white/10 px-3 py-1 text-sm text-white transition hover:bg-white/20"
-            title="Ver no GitHub"
+            className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-3 py-1 text-sm text-white hover:bg-white/10"
           >
-            <span className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 blur-md transition-opacity group-hover:opacity-100" />
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/20 ring-1 ring-white/20">
-              <Github size={14} />
-            </span>
-            <span className="font-medium">GitHub</span>
+            <Github size={14} />
+            <span>GitHub</span>
+            {stars !== null && (
+              <span className="ml-1 rounded bg-white/10 px-1.5 py-0.5 text-[11px]">
+                ⭐ {stars}
+              </span>
+            )}
           </a>
 
           {/* Switch de tema */}
