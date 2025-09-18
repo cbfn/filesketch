@@ -21,10 +21,7 @@ import {
 } from "@/lib/asciiThemes";
 import CodeEditorJSON from "@/components/CodeEditor";
 import { editorThemeFromAscii } from "@/lib/themeBridge";
-import { FileJson } from "lucide-react";
 import { getIconForNode } from "@/lib/fileIcons";
-import { getIconForFile } from "@/lib/getIconForFile";
-
 
 export default function TreeView() {
   const SAMPLE = `{
@@ -71,7 +68,6 @@ export default function TreeView() {
 
   const editorTheme = useMemo(() => editorThemeFromAscii(theme), [theme]);
 
-
   const onCopyAscii = async () => {
     const txt = formatTree(parsed.roots, projectName);
 
@@ -112,15 +108,36 @@ export default function TreeView() {
   };
 
   const onSnapshotAscii = async () => {
-    if (!asciiRef.current) return;
-    const dataUrl = await htmlToImage.toPng(asciiRef.current, {
-      pixelRatio: 2,
-    });
-    const a = document.createElement("a");
-    a.href = dataUrl;
-    a.download = `${projectName}-ascii-tree.png`;
-    a.click();
-  };
+  if (!asciiRef.current) return;
+
+  const pixelRatio = 2;        
+  const pad = Math.round(5 * pixelRatio); 
+
+  // captura só o wrapper interno (sem borda do card)
+  const srcCanvas = await htmlToImage.toCanvas(asciiRef.current, {
+    pixelRatio,
+    backgroundColor: theme.background,
+    cacheBust: true,
+  });
+
+  // adiciona margem transparente
+  const out = document.createElement("canvas");
+  out.width = srcCanvas.width + pad * 2;
+  out.height = srcCanvas.height + pad * 2;
+
+  const ctx = out.getContext("2d");
+  if (!ctx) return;
+
+  ctx.clearRect(0, 0, out.width, out.height);
+  ctx.drawImage(srcCanvas, pad, pad);
+
+  const dataUrl = out.toDataURL("image/png");
+  const a = document.createElement("a");
+  a.href = dataUrl;
+  a.download = `${projectName}-ascii-tree.png`;
+  a.click();
+};
+
 
   return (
     <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
@@ -235,16 +252,16 @@ export default function TreeView() {
                 title="Cor de fundo do ASCII"
               />
             </div>
-                <label className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm">
-    <input
-      type="checkbox"
-      checked={showIcons}
-      onChange={(e) => setShowIcons(e.target.checked)}
-      className="h-4 w-4 accent-[hsl(var(--accent))]"
-      aria-label="Mostrar ícones"
-    />
-    Ícones
-  </label>
+            <label className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm">
+              <input
+                type="checkbox"
+                checked={showIcons}
+                onChange={(e) => setShowIcons(e.target.checked)}
+                className="h-4 w-4 accent-[hsl(var(--accent))]"
+                aria-label="Mostrar ícones"
+              />
+              Ícones
+            </label>
             <button
               onClick={onSnapshotAscii}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm hover:opacity-90"
@@ -275,13 +292,17 @@ export default function TreeView() {
         </div>
 
         {/* Canvas ASCII */}
-        <div
-          className="mt-3 flex-1 overflow-hidden rounded-2xl border border-border p-4"
-          ref={asciiRef}
-          style={{ background: theme.background }}
-        >
-          <AsciiColored tokens={asciiTokens} theme={theme} showIcons={showIcons}  />
-        </div>
+        <div className="mt-3 flex-1 overflow-hidden rounded-2xl border border-border p-4" style={{ background: theme.background }}>
+  {/* wrapper interno sem borda, só com radius + bg */}
+  <div
+    ref={asciiRef}
+    className="h-full w-full rounded-xl"
+    style={{ background: theme.background, padding: "8px" }}
+  >
+    <AsciiColored tokens={asciiTokens} theme={theme} showIcons={showIcons} />
+  </div>
+</div>
+
       </section>
     </div>
   );
@@ -320,10 +341,14 @@ function AsciiColored({
     <pre className="m-0 whitespace-pre font-mono text-sm leading-6">
       {tokens.map((t) => {
         const palette = t.isFolder ? theme.folderColors : theme.fileColors;
-        const color = palette[t.depth % palette.length] ?? palette[0] ?? "#ffffff";
+        const color =
+          palette[t.depth % palette.length] ?? palette[0] ?? "#ffffff";
         return (
           <div key={t.lineIndex} className="flex">
-            <span className="select-none" style={{ color: theme.prefix, opacity: 0.7 }}>
+            <span
+              className="select-none"
+              style={{ color: theme.prefix, opacity: 0.7 }}
+            >
               {t.prefix}
             </span>
 
@@ -340,7 +365,9 @@ function AsciiColored({
 
             {/* se não mostrar ícone, preserva o recuo para alinhar? 
                 -> se quiser alinhar igual, mantenha w-5 vazia: */}
-            {!showIcons && <span className="inline-block shrink-0" aria-hidden />}
+            {!showIcons && (
+              <span className="inline-block shrink-0" aria-hidden />
+            )}
 
             <span style={{ color, fontWeight: t.isFolder ? 600 : 400 }}>
               {t.text}
