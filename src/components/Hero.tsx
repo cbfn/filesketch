@@ -5,7 +5,7 @@ import { toAsciiTokens } from "@/lib/formatAscii";
 import { parseDSL } from "@/lib/parser";
 import { DEFAULT_ASCII_THEME, type AsciiTheme } from "@/lib/asciiThemes";
 import { FolderTree, Copy, Palette, Image as ImageIcon, Code } from "lucide-react";
-import { getIconForNode } from "@/lib/fileIcons"; // ⟵ helper de ícones
+import { getIconForNode } from "@/lib/fileIcons";
 
 const SAMPLE = `{
     src: {

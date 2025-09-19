@@ -10,12 +10,9 @@ export default function Page() {
       <Hero />
       <section id="editor" className="mx-auto max-w-6xl px-4 py-14 ">
         <div className="mb-8 text-center">
-          {/* Título com hierarquia abaixo do Hero */}
           <h2 className="text-2xl font-semibold leading-tight md:text-3xl text-center text-[hsl(var(--accent))] ">
             Crie, personalize e exporte sua árvore de pastas
           </h2>
-
-          {/* Subtítulo com o mesmo padrão de corpo do Hero */}
           <p className="mt-2 mb-14 max-w-prose text-sm opacity-80 text-center mx-auto">
             Cole sua DSL no campo, escolha um tema e fundo para o ASCII, e então
             exporte como PNG ou copie a árvore em texto para usar em PRs e
@@ -28,7 +25,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Nova seção */}
       <div className="border-t border-gray-200 py-8 text-xs dark:border-gray-700">
         <DocumentationCards />
       </div>

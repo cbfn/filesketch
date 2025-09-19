@@ -13,22 +13,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Filesketch – Gere árvores de pastas bonitas",
-  description: "Transforme texto simples em árvores ASCII coloridas, exportáveis e temáveis. Feito por Christian Nascimento – cbfn.dev",
+  title: "Filesketch - Texto em árvore de pastas em segundos",
+  description:
+    "Transforme descrições simples em árvores ASCII bonitas e exportáveis. Escolha temas, personalize cores e compartilhe em PRs e documentações.",
+  keywords: [
+    "filesketch",
+    "ascii tree",
+    "folder structure",
+    "docs",
+    "next.js",
+    "cbfn.dev",
+  ],
   authors: [{ name: "Christian Nascimento", url: "https://cbfn.dev" }],
   openGraph: {
-    url: "https://filesketch.cbfn.dev", // ou seu domínio
-    title: "Filesketch",
-    description: "DSL → Árvore de pastas bonita",
-    images: [{ url: "/filesketch-tree.png", width: 1200, height: 630, alt: "Filesketch filesketch-tree" }],
+    title: "Filesketch - Texto em árvore de pastas em segundos",
+    description:
+      "De texto simples para árvore de pastas colorida. Temas, exportação PNG e muito mais.",
+    url: "https://filesketch.cbfn.dev",
+    siteName: "Filesketch",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "https://filesketch.cbfn.dev/filesketch-tree.png", // gere um print bonitão do app
+        width: 1200,
+        height: 630,
+        alt: "Preview do Filesketch",
+      },
+    ],
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Filesketch",
-  //   description: "Transforme texto simples em árvores de pastas bonitas",
-  //   creator: "@seu_usuario_twitter",
-  //   images: ["/preview.png"],
-  // },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@cbfndev", // se tiver twitter
+    title: "Filesketch - Texto em árvore de pastas em segundos",
+    description:
+      "Transforme descrições simples em árvores ASCII bonitas e exportáveis.",
+    images: ["https://filesketch.cbfn.dev/filesketch-tree.png"],
+  },
+  alternates: {
+    canonical: "https://filesketch.cbfn.dev",
+  },
 };
 
 

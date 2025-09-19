@@ -116,7 +116,6 @@ export default function DocumentationSplit() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1200);
     } catch {
-      // fallback simples
       window.prompt("Copie o exemplo:", active.code);
     }
   };

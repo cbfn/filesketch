@@ -11,7 +11,7 @@ type Props = {
   onChange: (val: string) => void;
   placeholder?: string;
   className?: string;
-  theme: EditorTheme;             // ⟵ novo
+  theme: EditorTheme;
 };
 
 export default function CodeEditorJSON({
@@ -21,7 +21,7 @@ export default function CodeEditorJSON({
   className = "",
   theme,
 }: Props) {
-  const uid = useId(); // escopo do CSS dos tokens
+  const uid = useId();
 
   return (
     <div
