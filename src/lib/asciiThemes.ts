@@ -1,4 +1,3 @@
-// lib/asciiThemes.ts
 export type AsciiTheme = {
   name: string;
   background: string;      // CSS color (ex: "#0f0f14" ou "hsl(220 10% 10%)")

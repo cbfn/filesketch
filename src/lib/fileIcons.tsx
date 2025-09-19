@@ -1,10 +1,13 @@
-// lib/fileIcons.tsx
 import {
-  Folder, File, FileCode, FileJson, FileText, Image as ImageIcon,
+  Folder,
+  File,
+  FileCode,
+  FileJson,
+  FileText,
+  Image as ImageIcon,
   Braces, // ts/js
-  FileType, // config genérico
   Settings, // configs
-  Package,  // package.json
+  Package, // package.json
   GitBranch,
   ShieldAlert, // .env
   BookOpen, // docs
@@ -17,19 +20,29 @@ type IconProps = { className?: string; size?: number };
 
 const byExt: Record<string, (p?: IconProps) => JSX.Element> = {
   // código
-  tsx: (p) => <Braces {...p} />, ts: (p) => <Braces {...p} />,
-  jsx: (p) => <FileCode {...p} />, js: (p) => <FileCode {...p} />,
-  mjs: (p) => <FileCode {...p} />, cjs: (p) => <FileCode {...p} />,
+  tsx: (p) => <Braces {...p} />,
+  ts: (p) => <Braces {...p} />,
+  jsx: (p) => <FileCode {...p} />,
+  js: (p) => <FileCode {...p} />,
+  mjs: (p) => <FileCode {...p} />,
+  cjs: (p) => <FileCode {...p} />,
   // web
-  html: (p) => <Globe {...p} />, css: (p) => <FileCode {...p} />,
-  scss: (p) => <FileCode {...p} />, sass: (p) => <FileCode {...p} />,
+  html: (p) => <Globe {...p} />,
+  css: (p) => <FileCode {...p} />,
+  scss: (p) => <FileCode {...p} />,
+  sass: (p) => <FileCode {...p} />,
   // dados / texto
-  json: (p) => <FileJson {...p} />, md: (p) => <BookOpen {...p} />,
-  mdx: (p) => <BookOpen {...p} />, csv: (p) => <FileSpreadsheet {...p} />,
+  json: (p) => <FileJson {...p} />,
+  md: (p) => <BookOpen {...p} />,
+  mdx: (p) => <BookOpen {...p} />,
+  csv: (p) => <FileSpreadsheet {...p} />,
   // imagens / assets
-  png: (p) => <ImageIcon {...p} />, jpg: (p) => <ImageIcon {...p} />,
-  jpeg: (p) => <ImageIcon {...p} />, gif: (p) => <ImageIcon {...p} />,
-  svg: (p) => <ImageIcon {...p} />, ico: (p) => <ImageIcon {...p} />,
+  png: (p) => <ImageIcon {...p} />,
+  jpg: (p) => <ImageIcon {...p} />,
+  jpeg: (p) => <ImageIcon {...p} />,
+  gif: (p) => <ImageIcon {...p} />,
+  svg: (p) => <ImageIcon {...p} />,
+  ico: (p) => <ImageIcon {...p} />,
 };
 
 const byFile: Record<string, (p?: IconProps) => JSX.Element> = {
@@ -60,7 +73,11 @@ const byFolder: Record<string, (p?: IconProps) => JSX.Element> = {
   tests: (p) => <Folder {...p} />,
 };
 
-export function getIconForNode(name: string, isFolder: boolean, props?: IconProps) {
+export function getIconForNode(
+  name: string,
+  isFolder: boolean,
+  props?: IconProps
+) {
   if (isFolder) {
     const key = name.toLowerCase();
     const I = byFolder[key] ?? Folder;

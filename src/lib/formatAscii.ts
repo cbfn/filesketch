@@ -10,12 +10,22 @@ export type AsciiToken = {
 };
 
 // Gera linhas com metadados pra colorir por profundidade/tipo
-export function toAsciiTokens(nodes: TreeNode[], rootLabel?: string): AsciiToken[] {
+export function toAsciiTokens(
+  nodes: TreeNode[],
+  rootLabel?: string
+): AsciiToken[] {
   const tokens: AsciiToken[] = [];
   let line = 0;
 
   if (rootLabel) {
-    tokens.push({ lineIndex: line++, depth: 0, isLast: true, isFolder: true, text: `${rootLabel}/`, prefix: "" });
+    tokens.push({
+      lineIndex: line++,
+      depth: 0,
+      isLast: true,
+      isFolder: true,
+      text: `${rootLabel}/`,
+      prefix: "",
+    });
   }
 
   const walk = (items: TreeNode[], prefixParts: string[], depth: number) => {

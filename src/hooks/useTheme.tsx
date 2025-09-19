@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export type ThemeMode = "light" | "dark" | "system";
 
 export function useTheme() {
-  const [mode, setMode] = useState<ThemeMode>("system"); // <- igual no SSR e no 1º render
+  const [mode, setMode] = useState<ThemeMode>("system");
 
   useEffect(() => {
     const stored = (localStorage.getItem("theme") as ThemeMode) || "system";

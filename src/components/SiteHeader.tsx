@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Github } from "lucide-react";
 import ThemeSwitch from "./ThemeSwitch";
-import { useGitHubStars } from "@/lib/useGitHubStars";
+import { useGitHubStars } from "@/hooks/useGitHubStars";
 
 export default function SiteHeader() {
   const stars = useGitHubStars("seu-usuario", "filesketch");
@@ -41,7 +41,7 @@ export default function SiteHeader() {
         {/* Ações */}
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com/seu-usuario/filesketch"
+            href="https://github.com/cbfn/filesketch"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-3 py-1 text-sm text-white hover:bg-white/10"

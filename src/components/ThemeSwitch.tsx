@@ -1,6 +1,6 @@
 // components/ThemeSwitch.tsx
 "use client";
-import { useTheme, type ThemeMode } from "@/lib/useTheme";
+import { useTheme, type ThemeMode } from "@/hooks/useTheme";
 import { Sun, Moon, Laptop } from "lucide-react";
 
 const options: { value: ThemeMode; label: string; Icon: any }[] = [

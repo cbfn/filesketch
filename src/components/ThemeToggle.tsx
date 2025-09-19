@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 const THEMES = ["light", "dark", "forest", "sunset"] as const;
-type Theme = typeof THEMES[number];
+type Theme = (typeof THEMES)[number];
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("light");

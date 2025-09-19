@@ -19,7 +19,7 @@ import {
   DEFAULT_ASCII_THEME,
   type AsciiTheme,
 } from "@/lib/asciiThemes";
-import CodeEditorJSON from "@/components/CodeEditor";
+import CodeEditorJSON from "@/components/CodeEditorJSON";
 import { editorThemeFromAscii } from "@/lib/themeBridge";
 import { getIconForNode } from "@/lib/fileIcons";
 
@@ -113,14 +113,12 @@ export default function TreeView() {
   const pixelRatio = 2;        
   const pad = Math.round(5 * pixelRatio); 
 
-  // captura só o wrapper interno (sem borda do card)
   const srcCanvas = await htmlToImage.toCanvas(asciiRef.current, {
     pixelRatio,
-    backgroundColor: theme.background,
+    backgroundColor: theme.background, // mantém o bg escolhido
     cacheBust: true,
   });
 
-  // adiciona margem transparente
   const out = document.createElement("canvas");
   out.width = srcCanvas.width + pad * 2;
   out.height = srcCanvas.height + pad * 2;
@@ -128,7 +126,11 @@ export default function TreeView() {
   const ctx = out.getContext("2d");
   if (!ctx) return;
 
-  ctx.clearRect(0, 0, out.width, out.height);
+  // fundo arredondado do tema
+  ctx.fillStyle = theme.background;
+  ctx.fillRect(0, 0, out.width, out.height);
+
+  // desenha com margem
   ctx.drawImage(srcCanvas, pad, pad);
 
   const dataUrl = out.toDataURL("image/png");
@@ -269,13 +271,21 @@ export default function TreeView() {
             >
               <ImageDown size={16} /> Exportar PNG
             </button>
-            <button
+          </div>
+        </div>
+
+        {/* Canvas ASCII */}
+        <div
+          className="relative mt-3 flex-1 overflow-hidden rounded-2xl border border-border p-4"
+          style={{ background: theme.background }}
+        >
+          <button
               type="button"
               onClick={onCopyAscii}
-              className={`inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm hover:opacity-90 ${
-                copied ? "pointer-events-none opacity-70" : ""
-              }`}
-              title={copied ? "Copiado!" : "Copiar árvore ASCII"}
+              className={`absolute top-2 right-2 inline-flex items-center gap-1 rounded-md bg-black/40 px-2 py-1 text-xs text-white backdrop-blur-sm hover:bg-black/60 transition ${
+      copied ? "pointer-events-none opacity-70" : ""
+    }`}
+    title={copied ? "Copiado!" : "Copiar árvore ASCII"}
               aria-live="polite"
             >
               {copied ? (
@@ -288,21 +298,19 @@ export default function TreeView() {
                 </>
               )}
             </button>
+          {/* wrapper interno sem borda, só com radius + bg */}
+          <div
+            ref={asciiRef}
+            className="h-full w-full rounded-xl"
+            style={{ background: theme.background, padding: "8px" }}
+          >
+            <AsciiColored
+              tokens={asciiTokens}
+              theme={theme}
+              showIcons={showIcons}
+            />
           </div>
         </div>
-
-        {/* Canvas ASCII */}
-        <div className="mt-3 flex-1 overflow-hidden rounded-2xl border border-border p-4" style={{ background: theme.background }}>
-  {/* wrapper interno sem borda, só com radius + bg */}
-  <div
-    ref={asciiRef}
-    className="h-full w-full rounded-xl"
-    style={{ background: theme.background, padding: "8px" }}
-  >
-    <AsciiColored tokens={asciiTokens} theme={theme} showIcons={showIcons} />
-  </div>
-</div>
-
       </section>
     </div>
   );
