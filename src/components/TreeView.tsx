@@ -72,7 +72,6 @@ export default function TreeView() {
   const onCopyAscii = async () => {
     const txt = formatTree(parsed.roots, projectName);
 
-    // caminho moderno
     if (navigator.clipboard && window.isSecureContext) {
       try {
         await navigator.clipboard.writeText(txt);
@@ -84,7 +83,6 @@ export default function TreeView() {
       }
     }
 
-    // fallback com textarea oculto (sem execCommand)
     try {
       const textarea = document.createElement("textarea");
       textarea.value = txt;
@@ -93,7 +91,7 @@ export default function TreeView() {
       document.body.appendChild(textarea);
       textarea.focus();
       textarea.select();
-      const ok = document.execCommand("copy"); // ⚠️ deprecated, mas ainda funciona
+      const ok = document.execCommand("copy"); // deprecated, mas ainda funciona
       document.body.removeChild(textarea);
       if (ok) {
         setCopied(true);
@@ -147,7 +145,7 @@ export default function TreeView() {
       {/* Card do editor */}
       <section className="flex min-h-[460px] flex-col rounded-2xl border border-border/60 bg-gradient-to-b from-card/60 to-card/20 p-4 shadow-sm">
         {/* Header do card */}
-        <div className="mb-3 flex items-center justify-between">
+        <div className="mb-3 flex flex-col space-y-4 items-left justify-between">
           <div className="flex items-center gap-2">
             <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-black/5 ring-1 ring-black/10 dark:bg-white/5 dark:ring-white/10">
               <Brackets size={16} />
