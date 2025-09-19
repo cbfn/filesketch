@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Github } from "lucide-react";
 import ThemeSwitch from "./ThemeSwitch";

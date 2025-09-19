@@ -93,7 +93,7 @@ function tokenize(input: string): Tok[] {
     }
 
     // NAME: qualquer sequência até encontrar delimitador/comma/brace/bracket/colon/whitespace
-    let start = i;
+    const start = i;
     while (i < s.length && !isWhitespace(s[i]) && !isDelimiter(s[i]) && s[i] !== ".") {
       i++;
     }

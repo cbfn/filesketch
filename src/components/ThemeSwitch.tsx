@@ -1,9 +1,10 @@
-// components/ThemeSwitch.tsx
 "use client";
-import { useTheme, type ThemeMode } from "@/hooks/useTheme";
-import { Sun, Moon, Laptop } from "lucide-react";
 
-const options: { value: ThemeMode; label: string; Icon: any }[] = [
+import { useTheme, type ThemeMode } from "@/hooks/useTheme";
+import { Sun, Moon, Laptop, LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
+
+const options: { value: ThemeMode; label: string; Icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> }[] = [
   { value: "light", label: "Claro", Icon: Sun },
   { value: "dark", label: "Escuro", Icon: Moon },
   { value: "system", label: "Sistema", Icon: Laptop },

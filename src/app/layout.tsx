@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Filesketch – Gere árvores de pastas bonitas",
   description: "Transforme texto simples em árvores ASCII coloridas, exportáveis e temáveis. Feito por Christian Nascimento – cbfn.dev",
   authors: [{ name: "Christian Nascimento", url: "https://cbfn.dev" }],

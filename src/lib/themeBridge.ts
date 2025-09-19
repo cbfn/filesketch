@@ -15,7 +15,7 @@ export type EditorTheme = {
 };
 
 function normalizeHex(input: string): string {
-  let h = input.trim();
+  const h = input.trim();
   if (!h.startsWith("#")) return "#1f2937"; // fallback (zinc-800)
   if (h.length === 4) {
     // #rgb -> #rrggbb

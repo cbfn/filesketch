@@ -1,4 +1,5 @@
 "use client";
+
 import { useMemo } from "react";
 import { toAsciiTokens } from "@/lib/formatAscii";
 import { parseDSL } from "@/lib/parser";
